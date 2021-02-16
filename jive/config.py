@@ -20,10 +20,10 @@ from typing import Dict, Optional
 from jive import mylogging as log
 from jive.preferences import Preferences
 
-VERSION = "0.7.5"
+VERSION = "0.7.6"
 tmp = sys.version    # Leave it here! This way "import sys" won't be removed accidentally.
 
-appname = "JiveImageViewer"
+appname = "Encrypt Image Viewer"
 app_dirs = AppDirs(appname, "")    # app_dirs.user_data_dir is what we need
 
 HOME_DIR = os.path.expanduser("~")
@@ -68,8 +68,8 @@ IMGUR_CLIENT_ID: Optional[str] = os.environ.get("IMGUR_CLIENT_ID")
 IMGUR_CLIENT_SECRET: Optional[str] = os.environ.get("IMGUR_CLIENT_SECRET")
 ## END: API keys
 
-ICON = str(Path(ASSETS_DIR, "icon.png"))
-LOGO = str(Path(ASSETS_DIR, "logo.png"))
+ICON = 'ei.unlock-alt'
+LOGO = str(Path(ASSETS_DIR, "Cool-Text-376705390751428.png"))
 LOADING = str(Path(ASSETS_DIR, "loading.png"))
 
 LONG = 1024    # for labels' widths to avoid text truncation
