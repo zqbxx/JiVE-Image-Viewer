@@ -41,6 +41,7 @@ from PyQt5.QtWidgets import (QAction, QApplication, QDesktopWidget,
 from functools import partial
 from pathlib import Path
 from typing import Tuple, Union, List, Optional
+import qtawesome as qta
 
 from jive import autodetect
 from jive import bookmarks
@@ -377,7 +378,8 @@ class MainWindow(QMainWindow):
         # self.resize(self.width, self.height)
 
         self.setWindowTitle(self.title)
-        self.setWindowIcon(QtGui.QIcon(cfg.ICON))
+        #self.setWindowIcon(QtGui.QIcon(cfg.ICON))
+        self.setWindowIcon(qta.icon(cfg.ICON, color='#2c3e50'))
 
         self.img_view = ImageView(self)
         # self.central_widget.setStyleSheet("background-color: black")
@@ -729,14 +731,14 @@ class MainWindow(QMainWindow):
         fileMenu.addAction(self.open_dir_act)
         open_url_menu = QMenu(self.menubar)
         open_url_menu.setTitle("Open &URL")
-        fileMenu.addMenu(open_url_menu)
+        #fileMenu.addMenu(open_url_menu)
         for entry in open_url_acts:
             if isinstance(entry, str):
                 open_url_menu.addSeparator()
             else:
                 open_url_menu.addAction(entry)
         fileMenu.addAction(self.open_custom_url_list_act)
-        fileMenu.addAction(self.open_random_subreddit_act)
+        #fileMenu.addAction(self.open_random_subreddit_act)
         fileMenu.addSeparator()
         fileMenu.addAction(self.save_image_act)
         fileMenu.addAction(self.save_image_list_act)
@@ -804,7 +806,7 @@ class MainWindow(QMainWindow):
         open_url_menu = QMenu(self.menu)
         open_url_menu.setTitle("Open &URL...")
         self.menu.addMenu(open_url_menu)
-        self.menu.addAction(self.open_random_subreddit_act)
+
         for entry in open_url_acts:
             if isinstance(entry, str):
                 open_url_menu.addSeparator()
@@ -812,6 +814,7 @@ class MainWindow(QMainWindow):
                 open_url_menu.addAction(entry)
         # self.menu.addAction(self.open_url_act)
         if self.show_subreddits:
+            self.menu.addAction(self.open_random_subreddit_act)
             open_subreddit_categories = QMenu(self.menu)
             open_subreddit_categories.setTitle("Select subreddit...")
             self.menu.addMenu(open_subreddit_categories)
